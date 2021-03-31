@@ -1,65 +1,79 @@
-import Head from 'next/head'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <div>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <div className={styles.content}>
+          <header className={styles.header}>
+            <section>
+              <div>
+              <Image src="/Markmark.png" alt="BaseGit Logo" width={49} height={45}/>
+              </div>
+              <h2>Sign up to BaseGit</h2>
+              <aside>
+                <p>BaseGit is the best way to store information</p>
+              </aside>
+            </section>
+          </header>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+          <main>
+            <div className={styles.social_sign}>
+              <h3 className={styles.social_heading}>Continue with a provider</h3>
+              <div className={styles.social_buttons}>
+                <button className={styles.social_buttons_i}>
+                  <Image src="/Pathfacebook.png" alt="FB logo" width={20} height={20} />
+                </button>
+                <button className={styles.social_buttons_i}>
+                  <Image src="/Pathtwitter.png" alt="TW logo"  width={20} height={20} />
+                </button>
+                <button className={styles.social_buttons_i}>
+                  <Image src="/Pathgithub.png" alt="GH logo"  width={20} height={20} />
+                </button>
+              </div>
+            </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+            <div className={styles.ribbon}>
+              <p className={styles.ribbon_divider}> </p>
+              <p className={styles.ribbon_text}>Or with your work email</p>
+              <p className={styles.ribbon_divider_2}> </p>
+            </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            <div className={styles.input}>
+              <h4 className={styles.input_text}>Email address</h4>
+              <form className={styles.input_placeholder}>
+                <input className={styles.input_placeholder_i} type="email" name="e-Mail" maxlength="64" required />
+              </form>
+            </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            <div className={styles.input}>
+              <h4 className={styles.input_text}>Password</h4>
+              <form className={styles.input_placeholder}>
+                <input className={styles.input_placeholder_i} type="password" name="Password" minlength="6" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Must contain 6 digits, an upper-case letter, a lower-case letter and a number." required />
+              </form>
+            </div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            <div className={styles.input}>
+              <h4 className={styles.input_text}>Confirm password</h4>
+              <form className={styles.input_placeholder}>
+                <input className={styles.input_placeholder_i} type="password" minlength="6" required />
+              </form>
+            </div>
+
+            <button className={styles.button}>
+              <text className={styles.button_text}>Sign up</text>
+            </button>
+
+          </main>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+        <div className={styles.decorative}>
+            <Image className={styles.image} src="/Imagerocket.jpg" alt="rocket image" width={800} height={864} />
+        </div>
+
+
+      </main>
     </div>
   )
 }
