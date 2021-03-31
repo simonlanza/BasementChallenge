@@ -1,7 +1,42 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [email, setEmail] = useState("")
+  const [passw, setPassw] = useState("")
+  const [confirmPassw, setConfirmPassw] = useState("") 
+
+  const handleChange = (e) => {
+    const {name, value} = e.target 
+    if (name === "email") {
+      setEmail(value)
+    } else if ( name === "passw") {
+      setPassw(value)
+    } else if (name === "confirmPassw") {
+      setConfirmPassw(value) 
+    } else return
+  }
+
+  const handleSubmit = () => {
+    const validation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,100}$/
+
+    if ( !email | !passw | !confirmPassw ) {
+      alert("You must complete all fields")
+    } else if(passw.length < 6) {
+      alert("Your password needs a minimium of six characters")
+    } else if (!validation.test(passw)) {
+      alert("Your password must contain an upper-case letter, an lower-case letter and a number")
+    } else if (passw !== confirmPassw) {
+      alert("Your passwords doesn't match")
+    } else {
+      window.localStorage.setItem("email", email)
+      window.localStorage.setItem("passw", passw)
+    }
+  }
+  console.log(email, passw, confirmPassw)
+
+
   return (
     <div className={styles.conteiner}>
       <div className={styles.contentwrapper}>
@@ -38,23 +73,23 @@ export default function Home() {
               <p className={styles.ribbon_divider}> </p>
             </div>
 
-            <form>
+            <form className={styles.form} onSubmit={handleSubmit} > 
               <div className={styles.input}>
                 <label className={styles.input_text} htmlFor="e-mail">Email address</label>
-                <input className={styles.input_input} id="e-mail" type="email" />
+                <input className={styles.input_input} id="e-mail" type="email" maxLength="64" name="email" onChange={handleChange} />
               </div>
 
               <div className={styles.input}>
                 <label className={styles.input_text} htmlFor="password">Password</label>
-                <input className={styles.input_input}  id="password" type="password" />
+                <input className={styles.input_input}  id="password" type="password" name="passw" onChange={handleChange} />
               </div>
 
               <div className={styles.input}>
-                <label className={styles.input_text} htmlFor="password">Confrim password</label>
-                <input className={styles.input_input}  id="password" type="password" />
+                <label className={styles.input_text} htmlFor="confirmpassword">Confrim password</label>
+                <input className={styles.input_input}  id="confirmpassword" type="password" name="confirmPassw" onChange={handleChange} />
               </div>
 
-              <button className={styles.button}>
+              <button type="submit" className={styles.button}>
                 Sign up
               </button>
             </form>
@@ -66,3 +101,5 @@ export default function Home() {
     </div>
   )
 }
+
+
